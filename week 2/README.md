@@ -14,7 +14,7 @@ After some troubleshooting I noticed that I needed the third nested table and fi
 <b>Getting the Location Name:</b><br />
 ```
 let $elem = $(elem);
-streetAdd += ($elem.find('b').text().trim()) + '\n';
+    streetAdd += ($elem.find('b').text().trim()) + '\n';
 });
 ```
 
@@ -30,7 +30,7 @@ let $textNodes = $elem.contents().filter(function () {
  });
 ```
 <br>
-<b>Extracting the Address:</b><br />
+<b>Extracting the Address:</b><br>
 
 ```
 let count = 0;
