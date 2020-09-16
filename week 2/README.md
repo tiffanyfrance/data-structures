@@ -29,7 +29,7 @@ let $textNodes = $elem.contents().filter(function () {
      return this.nodeType == 3;
  });
  ```
-<br><br>
+<br>
 <b>Extracting the Address:</b><br />
 ```
 let count = 0;
