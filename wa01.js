@@ -21,7 +21,7 @@ var urlArr = [
 for(let i = 0; i < urlArr.length; i++) {
     request(urlArr[i], function(error, response, body){
         if (!error && response.statusCode == 200) {
-            var urlPath = '/home/ec2-user/environment/data/m' + i + '.txt';
+            var urlPath = '/Users/tiffanyfrance/Projects/Grad School/Parsons/data-structures/data/m' + i + '.txt';
             fs.writeFileSync(urlPath, body);
         }
         else {console.log("Request failed!")}
