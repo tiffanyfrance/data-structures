@@ -13,9 +13,10 @@ After some troubleshooting I noticed that I needed the third nested table and fi
 <br><br>
 <b>Getting the Location Name:</b><br />
 ```let $elem = $(elem);
-
     streetAdd += ($elem.find('b').text().trim()) + '\n';
-    });```<br>
+    });```
+
+<br>
 
 The b tag has the location name. It needed to be trimmed. Added a new line at the end.
 <br><br>
