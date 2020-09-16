@@ -11,7 +11,7 @@ I was using an old version of node for another project. Cheerio was failing on v
 ```$('table table table tr td:first-of-type')```<br>
 After some troubleshooting I noticed that I needed the third nested table and first td. This is very perscriptive for this file only. Will not translate well to other projects.
 <br><br>
-<b>Getting the Location Name:</b><br />
+<b>Getting the Location Name:</b><br>
 ```let $elem = $(elem);
     streetAdd += ($elem.find('b').text().trim()) + '\n';
     });```
