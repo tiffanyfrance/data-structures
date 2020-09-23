@@ -7,6 +7,8 @@ const fs = require('fs'),
       async = require('async'),
       dotenv = require('dotenv');
 
+const dirPath = '/Users/tiffanyfrance/Projects/Grad School/Parsons/data-structures/';
+
 // TAMU api key
 dotenv.config();
 const API_KEY = process.env.API_KEY;
@@ -15,7 +17,7 @@ const API_URL = 'https://geoservices.tamu.edu/Services/Geocode/WebService/Geocod
 // geocode addresses
 let meetingsData = [];
 // let addresses = ["63 Fifth Ave", "16 E 16th St", "2 W 13th St"];
-let rawdata = fs.readFileSync('/Users/tiffanyfrance/Projects/Grad School/Parsons/data-structures/week2/data/street-address.json');
+let rawdata = fs.readFileSync(dirPath + 'week2/data/street-address.json');
 let addresses = JSON.parse(rawdata);
 
 // eachSeries in the async module iterates over an array and operates on each item in the array in series
@@ -26,7 +28,8 @@ async.eachSeries(addresses, function(value, callback) {
         state: "NY",
         apikey: API_KEY,
         format: "json",
-        version: "4.01"
+        version: "4.01",
+        alllowTies: false
     };
 
     // construct a querystring from the `query` object's values and append it to the api URL
@@ -43,7 +46,7 @@ async.eachSeries(addresses, function(value, callback) {
     // sleep for a couple seconds before making the next request
     setTimeout(callback, 2000);
 }, function() {
-    fs.writeFileSync('/Users/tiffanyfrance/Projects/Grad School/Parsons/data-structures/week3/data/first.json', JSON.stringify(meetingsData));
+    fs.writeFileSync(dirPath + 'week3/data/locations.json', JSON.stringify(meetingsData));
     console.log('*** *** *** *** ***');
     console.log(`Number of meetings in this zone: ${meetingsData.length}`);
 });

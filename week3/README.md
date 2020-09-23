@@ -15,5 +15,4 @@ fs.writeFileSync('...street-address.json', JSON.stringify(streetAdd));
 I used .env package to store my API Key and then added that to the gitignore to prevent it from being published.
 
 <b>Questions</b><br />
-- I don't know why the file is called first.json but I didn't rename.
 - The output has a lot of extra stuff, but it wasn't clear if I was supposed to clean it up.
