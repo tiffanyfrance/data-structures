@@ -4,10 +4,10 @@
 This assignment had us create a new database using RDS.<br>
 
 There were three parts to this assignment:<br />
-<b>PART 1: CREATE</b> - to create a new table for our postgres database using javascript<br />
-<b>Part 2: INSERT</b> - to add the AA location data that we've been working with using the ```async.eachSeries``` 
+- <b>PART 1: CREATE</b> - to create a new table for our postgres database using javascript<br />
+- <b>Part 2: INSERT</b> - to add the AA location data that we've been working with using the ```async.eachSeries``` 
 to loop through the results of json (loaded from week 3 using ``fs``)<br />
-<b>Part 3: QUERY (SELECT)</b> - to view rows using the ```SELECT * aalocations``` command. I also chose to verify 
+- <b>Part 3: QUERY (SELECT)</b> - to view rows using the ```SELECT * aalocations``` command. I also chose to verify 
 the table contents using PGAdmin.
 
 ## Local Problems
