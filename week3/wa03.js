@@ -39,8 +39,17 @@ async.eachSeries(addresses, function(value, callback) {
         if (err){ throw err; }
 
         let tamuGeo = JSON.parse(body);
+
+        let newObj = {};
+        newObj['address'] = tamuGeo.InputAddress.StreetAddress.replace(' New York NY', ', New York, NY').trim();
+        
+        newObj['latLong'] = {};
+        newObj.latLong['lat'] = parseFloat(tamuGeo.OutputGeocodes[0].OutputGeocode.Latitude);
+        newObj.latLong['lng'] = parseFloat(tamuGeo.OutputGeocodes[0].OutputGeocode.Longitude);
+        
+
         console.log(tamuGeo['FeatureMatchingResultType'], apiRequest);
-        meetingsData.push(tamuGeo);
+        meetingsData.push(newObj);
     });
 
     // sleep for a couple seconds before making the next request
