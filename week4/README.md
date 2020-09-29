@@ -17,17 +17,32 @@ In my debug process, I did several things, but will list the main ones here:<br 
 
 - <b>PGAdmin</b> - 
 Downloaded and installed PGAdmin in order to have more control over the
-request without the javascript code interferring.
+request without the javascript code interferring.<br>
+```CREATE TABLE aalocations (address varchar(125), lat double precision, long double precision);```<br>
 
 - <b>Reworked Configs</b> - 
 I opened up the configs in AWS to make sure that all my database settings were correct. 
 While in here I realized that changes don't appear immediately unless you tell 
-Amazon to do so.
+Amazon to do so.<br />
+```INSERT INTO aalocations VALUES (E'" + value.address + "', " + value.latLong.lat + ", " + value.latLong.lng + ");```<br>
 
 - <b>Open to Public</b> - 
 According to this article that I found, in order to use RDS locally 
-for writing I had to set open to public.<br>
+for writing I had to set open to public. 
 <b>Documentations:</b> https://aws.amazon.com/getting-started/tutorials/create-connect-postgresql-db/ <br />
+```SELECT * FROM aalocations;```<br>
 
 ## Escaping commas
 I learned that ```E'``` will escape commas in a string
+
+## Packages used
+```javascript
+const { Client } = require('pg');
+var async = require('async');  
+const fs = require('fs');
+const dotenv = require('dotenv');
+```
+
+PG is used for postgres database. Async was used for looping through the data.
+FS was used for writing and retrieving files.
+Dotenv was used for storing variables locally.
