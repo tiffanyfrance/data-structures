@@ -14,5 +14,15 @@ fs.writeFileSync('...street-address.json', JSON.stringify(streetAdd));
 <b>.env</b><br /> 
 I used .env package to store my API Key and then added that to the gitignore to prevent it from being published.
 
-<b>Questions</b><br />
-- The output has a lot of extra stuff, but it wasn't clear if I was supposed to clean it up.
+<b>Modifying data</b><br />
+Before week 4 assignment, I modified the data in order to export it similiar to the example from the week 4 videos.
+```javascript
+    let newObj = {};
+
+    newObj['address'] = tamuGeo.InputAddress.StreetAddress.replace(' New York NY', ', New York, NY').trim();
+    
+    newObj['latLong'] = {};
+    newObj.latLong['lat'] = parseFloat(tamuGeo.OutputGeocodes[0].OutputGeocode.Latitude);
+    newObj.latLong['lng'] = parseFloat(tamuGeo.OutputGeocodes[0].OutputGeocode.Longitude);
+```
+Because this is nested in the async.eachSeries, no further iterators were needed.
