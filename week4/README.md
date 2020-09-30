@@ -51,6 +51,6 @@ FS was used for writing and retrieving files.
 Dotenv was used for storing variables locally.<br />
 
 ## Table layout
-Designed tables to have one address and another with meeting data. The meeting data also has the ability to change location in the building.<br />
+I designed tables to have one address and another with meeting data. The meeting data also has the ability to change room number (or location/varchar 100) in the building.<br />
 NOTE: Updated 9/30 based on class review.<br />
 <img src="table.png">
