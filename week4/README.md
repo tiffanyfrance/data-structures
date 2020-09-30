@@ -53,5 +53,5 @@ Dotenv was used for storing variables locally.<br />
 ## Table layout
 My table layout is based off my use of data in js, thinking that it would be 
 easier to make a large csv file that was fairly flat.<br />
-NOTE: After attending class, I will be updating this.<br />
+NOTE: Updated 9/30 based on class review.<br />
 <img src="table.png">
