@@ -48,4 +48,10 @@ const dotenv = require('dotenv');
 
 PG is used for postgres database. Async was used for looping through the data.
 FS was used for writing and retrieving files.
-Dotenv was used for storing variables locally.
+Dotenv was used for storing variables locally.<br />
+
+## Table layout
+My table layout is based off my use of data in js, thinking that it would be 
+easier to make a large csv file that was fairly flat.<br />
+After seeing others in class, I will likely update this.<br />
+<img src="table.png">
