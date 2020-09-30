@@ -51,7 +51,6 @@ FS was used for writing and retrieving files.
 Dotenv was used for storing variables locally.<br />
 
 ## Table layout
-My table layout is based off my use of data in js, thinking that it would be 
-easier to make a large csv file that was fairly flat.<br />
+Designed tables to have one address and another with meeting data. The meeting data also has the ability to change location in the building.<br />
 NOTE: Updated 9/30 based on class review.<br />
 <img src="table.png">
