@@ -32,7 +32,7 @@ I went with a destructered database because I believe it is the most optimal.
 Also, there isn't much data and the data seems to go together so I didn't
 see the need to overengineer this db at this point. As you can see from the picture, initially I wanted a image but ended up removing that since I didn't have any images ready to go.<br>
 
-<img src="destructured.png" width="200px""><br><br>
+<img src="destructured.png" width="200px"><br><br>
 
 ## Setting permissions
 I set permissions using IAM in AWS. This was a great way to learn since it seems like
