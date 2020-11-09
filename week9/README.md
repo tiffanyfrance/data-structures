@@ -28,53 +28,39 @@ I set my device on the front porch. I am a little worried about the humidity in 
 To set up the code I went to <a href="http://build.particle.io/">the particle IDE</a> to set up the code.
 
 Two functions:
-```void setup() {}```
-To setup the device in the code.
+- ```void setup() {}``` - to setup the device in the code.
+- ```void loop() {}``` - to continuously loop through and update the values.
 
-```void loop() {}```
-To continuously loop through and update the values.
+The benefit of using Adafruit is that, not only is it a woman owned business but it also has a nice template ready to go for this project. To access it in the particle IDE go to: Libraries > (DHT22 - sensor) > ADAFRUIT_DHT_PARTICLE > dht-test.io and click on "Use this example". This template gets us going with prebuilt code in the particle IDE. 
 
-Libraries > (DHT22 - sensor) > ADAFRUIT_DHT_PARTICLE > dht-test.io
+NOTE: ```DHTPIN 02``` refers to the pin being used.
 
-Clicked "Use this example"
-
-This template gets us going with prebuilt code in the particle IDE. 
-
-``DHTPIN 02``` refers to the pin being used.
-
-I added three values to record in this file:
+I added three values to record in this file:<br />
 ```
 double tempF = 0;
 double humidity = 0;
 double heatIndex = 0;
 ```
-The lightening bolt sends this code to the Photon. The progress bar at the bottom allows you see the update of the device. When done, the device goes back to breathing cyan.
+Clicking on the lightening bolt in the far right menu at the top will send this code to the Photon. The progress bar at the bottom allows you see the update of the device. When done with the operation, the device goes back to breathing cyan.
 
 <a href="http://console.particle.io">http://console.particle.io</a> allows you to monitor the connection of the Photon and get readings. The communication happens from your WiFi to particle.
 
 ## Particle API results
-How to get the results programatically? We need to use the particle API
+To get the results programatically, we need to use the particle API which is formatted as follows: ```https://api.particle.io/v1/devices/[DEVICE_ID]/temp?access_token=[TOKEN_ID]```
 
-https://api.particle.io/v1/devices/[DEVICE_ID]/temp?access_token=[TOKEN_ID]
+- The device id can be found in the particle console.
+- "temp" can be replaced in my string with "humidity" or "heatIndex" since I set up multiple variables.
+- We had to install the particle client (particle CLI) in Cloud9. This CLI is available on the particle website. The CLI will allow us to get an access token: ```bash <( curl -sl https://particle.io/install-cli )```
 
-The device id can be found in the particle console.
+Once the CLI is installed, you can run the following to get an access token: ```particle token create``` 
 
-"temp" can be replaced in my string with "humidity" or "heatIndex" since I set up multiple variables.
-
-We had to install the particle client (particle CLI) available on the particle website. This gives us an access token.
-
-```bash <( curl -sl https://particle.io/install-cli )```
-
-Once this is installed you have to log in. Then you can run the following to get an access token:
-```particle token create`` 
-
-This url only works if the device is plugged in.
+NOTE: This API url will only work if the device is plugged in.
 
 ## Create Table for Results
 
 ```wa09.js```
 
-The code here had two requirements: ```pg``` for the postgres database and ```dotenv``` for storing the environment variables which include credentials for accessing the pg db.
+The code here had two module requirements: ```pg``` for the postgres database and ```dotenv``` for storing the environment variables which include credentials for accessing the pg db.
 
 We are using our existing db for AA in order to save a dollar per day from AWS. Assignment 4 was a great help since all of these env vars were set up there already.
 
@@ -139,3 +125,4 @@ var thirdQuery = "SELECT sensorTemp, COUNT (*) FROM sensorData GROUP BY sensorTe
 This allowed us to see the data in the table as well as how many rows had been written. We ran this to ensure that the number continued to increase.
 
 This was great in the terminal, however, I continued to prefer to use <b>pgAdmin</b> to look at the results.
+
