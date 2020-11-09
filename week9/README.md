@@ -15,13 +15,13 @@ Assignment 8 & 9 were used to hook up a Photon controller and connect it to a da
 <b>Assembly</b>
 Each portion of the breadboard has particular metal strips that can be used to complete circuts, so the position of each part is important. One note, you have to push down fairly hard to get some of the pieces installed.
 
-<img src="guide.png">
+<img src="guide.png" style="max-width:300px;">
 
 Using setup.particle.io, I followed the instructions to set up the Photon. This was a simple wizard for getting the device online. The device "breathes" <span style="color: cyan">cyan</span> when it gets online.
 
 I set my device on the front porch. I am a little worried about the humidity in our area destroying the board, but so far, no problems except for the occasional spider.
 
-<img src="photon.png">
+<img src="photon.jpg" style="max-width:300px;">
 
 ## Setting up the Particle Code
 
