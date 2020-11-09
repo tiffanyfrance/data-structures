@@ -67,13 +67,14 @@ We are using our existing db for AA in order to save a dollar per day from AWS. 
 We started out by creating a new table using a SQL statement. I modified this SQL in order to include <b>sensorTemp</b>, <b>sensorHum</b>, and <b>sensorHI</b>. I also created a column for <b>sensorTime</b>.<br />
 ```var thisQuery = "CREATE TABLE sensorData ( sensorTemp double precision, sensorHum double precision, sensorHI double precision, sensorTime timestamp DEFAULT current_timestamp );";
 ```
+
 I had to drop and recreate this table a couple of times to get it correct. I used the DROP statement, but also ended up installing pgAdmin as a way to monitor my progress in a GUI-er application.
 
 ## Inserting Results into the Table
 
 ```week9worker.js```
 
-This is the powerhorse of the application. I am using ```fetch``` for making the request from the API, ```pg```, and ```dotenv```.
+This is the powerhorse file of the application. I am using ```fetch``` for making the request from the API, ```pg```, and ```dotenv```.
 
 For the environment variables, I identified the device_id and access_token separately so that they would not be published.
 
@@ -84,20 +85,17 @@ To handle the multiple variables, I put them in an array:<br />
 
 I used ```async``` and ```await``` in order to set up my promise structure in the code, following the latest javascript fetch patterns.<br />
 ```var getAndWriteData = async function() {
-    
+
     var sensorVals = [];
     
     for (var particle_variable of particle_var_array) {      
         var device_url = 'https://api.particle.io/v1/devices/' + device_id + '/' + particle_variable + '?access_token=' + access_token;
-        
         var res = await fetch(device_url);
-
         var json = await res.json();
-        
         sensorVals.push(json.result);
     }
-    ...
-}```
+}
+```
 
 This allowed me to form a string called ```thisQuery``` where I could concatenate all of the variables into one ```INSERT``` statement.
 ```var thisQuery = "INSERT INTO sensorData VALUES (" + sensorVals.join(',') + ", DEFAULT);";```
@@ -124,5 +122,5 @@ var thirdQuery = "SELECT sensorTemp, COUNT (*) FROM sensorData GROUP BY sensorTe
 
 This allowed us to see the data in the table as well as how many rows had been written. We ran this to ensure that the number continued to increase.
 
-This was great in the terminal, however, I continued to prefer to use <b>pgAdmin</b> to look at the results.
+This was great in the terminal, however, I continue to prefer to use <b>pgAdmin</b> to look at the results.
 
