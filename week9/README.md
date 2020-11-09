@@ -67,7 +67,6 @@ We are using our existing db for AA in order to save a dollar per day from AWS. 
 We started out by creating a new table using a SQL statement. I modified this SQL in order to include <b>sensorTemp</b>, <b>sensorHum</b>, and <b>sensorHI</b>. I also created a column for <b>sensorTime</b>.<br />
 ```var thisQuery = "CREATE TABLE sensorData ( sensorTemp double precision, sensorHum double precision, sensorHI double precision, sensorTime timestamp DEFAULT current_timestamp );";
 ```
-
 I had to drop and recreate this table a couple of times to get it correct. I used the DROP statement, but also ended up installing pgAdmin as a way to monitor my progress in a GUI-er application.
 
 ## Inserting Results into the Table
@@ -115,9 +114,9 @@ In order to check on the status of collection, Aaron suggested we create a execu
 
 We used ```console.table``` in order to format the results in the terminal. We used three queries:
 
-```var thisQuery = "SELECT * FROM sensorData;"; // print all values
-var secondQuery = "SELECT COUNT (*) FROM sensorData;"; // print the number of rows
-var thirdQuery = "SELECT sensorTemp, COUNT (*) FROM sensorData GROUP BY sensorTemp;"; // print the number of rows for each sensorTemp
+```var thisQuery = "SELECT * FROM sensorData;";
+var secondQuery = "SELECT COUNT (*) FROM sensorData;";
+var thirdQuery = "SELECT sensorTemp, COUNT (*) FROM sensorData GROUP BY sensorTemp;";
 ```
 
 This allowed us to see the data in the table as well as how many rows had been written. We ran this to ensure that the number continued to increase.
