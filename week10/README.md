@@ -24,17 +24,19 @@ This isn't a truly "exploratory" visualization in that it may prompt a user to e
 
 <img src="map2.jpg" width="400px">
 <br />
+
 <b>Drill-down By Neighborhood</b>
 <br />
 Thinking more about the user, I thought it might be useful to allow the user to navigate to a starting point. This could be done by listing the neighborhoods in a dropdown, or by proving the users a start overlay on the map with which they can choose their neighborhoods. This may be helpful to instantly narrow their choices. Some drawbacks of this are:
 - extra click for users
 - user may want to search several neighborhoods
-
+<br />
 <br />
 Can we use a library other than Leaflet? Mapbox, Kepler, Deckgl...
 <br />
-<b>Deckgl</b> - I don't know if this is possible in the layers, but it would be really neat to add a layer of color for the location of the building.
 <br />
+<b>Deckgl</b> - I don't know if this is possible in the layers, but it would be really neat to add a layer of color for the location of the building.
+<br /><br />
 <img src="deckgl.png" width="400px">
 
 <b>Kepler</b> - here is a mockup of how that might look in kepler. The yellow square indicates the location of the building. I don't know if this can be built, if the building layer data exists in a reliable way, but it was something I wanted to mockup and explore.
