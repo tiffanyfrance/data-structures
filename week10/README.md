@@ -61,7 +61,7 @@ To reiterate, the fields include date, pain level, mood, and various medicines t
 <b>The Idea</b>
 <br />
 Ideally this would be an illustrator visualization, but I will be attempting to build it using Javascript (yikes!). I was inspired by the way Nadieh Bremer often layers data in circular visualizations. My visualization will show four layers: pain, date, pills, and mood.
-<br />
+<br /><br />
 <img src="recovery.jpg"  width="400px">
 
 <b>Answers</b>
@@ -78,7 +78,7 @@ Ideally this would be an illustrator visualization, but I will be attempting to 
 I haven't recieved the magnetic field sensor yet so I am using the temperature/humidity gauge.
 
 For the visualization, I want to create a collection of multiples. Each individual graph will be a day, from sun up to the following day sun up. The sunrise/sunset information will be collected by another data source specifically using my zip code. The blue indicates the level of humidity for that day. I would like to reduce the number of items in the graphs to the bare minimum, meaning I want to remove the axises and lines and any other chart pieces, in order to experiement with just how minimal the design can get and still have meaning.
-<br />
+<br /><br />
 <img src="weather.jpg" width="400px">
 
 This collection of multiples will have interaction, similiar to that found on fivethirtyeight: <a href="https://projects.fivethirtyeight.com/trump-approval-ratings/">https://projects.fivethirtyeight.com/trump-approval-ratings/</a>. Hovering one of the maps will show the same time for all of the days. My hypothesis of how this will look is that it will show shorter, colder days when hovered in a group.
