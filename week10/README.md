@@ -5,20 +5,24 @@
 I wanted to focus on the user and approach this one from a UX perspective. Therefore, I asked questions about how can the user find what they need as quickly as possible.
 
 Basic design
-<img src="map1.jpg" width="200px">
+<br />
+<img src="map1.jpg" width="400px">
 
 By Neighborhood
 - extra click for users
 - but may be a helpful navigation tool
-<img src="map2.jpg" width="200px">
+<br />
+<img src="map2.jpg" width="400px">
 
 I know we are supposed to use leaflet, but wonder if maybe we can instead use something else? Mapbox, kepler, deckgl...
 
 Deckgl - I don't know if this is possible in the layers, but it would be really neat to add a layer of color for the location of the building.
-<img src="deckgl.png" width="200px">
+<br />
+<img src="deckgl.png" width="400px">
 
 Kepler - here is a mockup of how that might look in kepler:
-<img src="kepler.png" width="200px">
+<br />
+<img src="kepler.png" width="400px">
 
 
 # Project 2: Recovery Blog
@@ -26,8 +30,8 @@ Kepler - here is a mockup of how that might look in kepler:
 Intitally for this project I wanted to write a daily poem, however because of a personal health issue, I decided to turn this into a visualization recording my recovery.
 
 The fields include date, pain level, mood, and various medicines taken (through IV and orally) for the ~month that I was in recovery from emergency surgery.
-
-<img src="recover.jpg"  width="200px">
+<br />
+<img src="recover.jpg"  width="400px">
 
 - tooltips are the only interaction
 - data will be mapped into line graphs and area charts that are curved into a layered ring. Pill numbers will be color coded and grouped by date. The circle represents days from Oct 1 - Nov 7.
@@ -39,8 +43,7 @@ The fields include date, pain level, mood, and various medicines taken (through 
 # Project 3: Weather Sensor
 
 I haven't recieved the magnetic field sensor yet so I am using the temperature/humidity gauge.
-
-<img src="weather.jpg" width="200px">
+<br /><img src="weather.jpg" width="400px">
 
 Interaction will be collective as seen in the multiple charts of this fivethirtyeight visualization: <a href="https://projects.fivethirtyeight.com/trump-approval-ratings/">https://projects.fivethirtyeight.com/trump-approval-ratings/</a>. 
 
