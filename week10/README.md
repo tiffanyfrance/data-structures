@@ -30,15 +30,15 @@ Thinking more about the user, I thought it might be useful to allow the user to 
 - extra click for users
 - user may want to search several neighborhoods
 
-
+<br />
 Can we use a library other than Leaflet? Mapbox, Kepler, Deckgl...
-
-Deckgl - I don't know if this is possible in the layers, but it would be really neat to add a layer of color for the location of the building.
+<br />
+<b>Deckgl</b> - I don't know if this is possible in the layers, but it would be really neat to add a layer of color for the location of the building.
 <br />
 <img src="deckgl.png" width="400px">
 
-Kepler - here is a mockup of how that might look in kepler:
-<br />
+<b>Kepler</b> - here is a mockup of how that might look in kepler. The yellow square indicates the location of the building. I don't know if this can be built, if the building layer data exists in a reliable way, but it was something I wanted to mockup and explore.
+<br /><br />
 <img src="kepler.png" width="400px">
 
 <b>Answers</b>
