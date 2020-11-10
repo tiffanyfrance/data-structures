@@ -62,7 +62,7 @@ To reiterate, the fields include date, pain level, mood, and various medicines t
 <br />
 Ideally this would be an illustrator visualization, but I will be attempting to build it using Javascript (yikes!). I was inspired by the way Nadieh Bremer often layers data in circular visualizations. My visualization will show four layers: pain, date, pills, and mood.
 <br />
-<img src="recover.jpg"  width="400px">
+<img src="recovery.jpg"  width="400px">
 
 <b>Answers</b>
 <br/>
