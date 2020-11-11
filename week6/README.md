@@ -9,6 +9,8 @@ var thisQuery = "SELECT address, lat, long FROM aalocations WHERE address = '122
 ```
 This returned a response, no problem.
 
+<img src="sql.png" width="300px">
+
 # NoSQL Query
 
 I am having trouble with the dynamo query. I was able to get a single query by specifying a singe post_num (my primary key), however I was not able to get the date range to work, nor was I able to get multiple returns. I tried recreating my table but that didn't help.
@@ -28,4 +30,4 @@ var params = {
 };
 ```
 
-<img src="dynamo.png" width="200px">
+<img src="dynamo.png" width="300px">
