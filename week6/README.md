@@ -27,3 +27,5 @@ var params = {
     }
 };
 ```
+
+<img src="dynamo.png" width="200px">
