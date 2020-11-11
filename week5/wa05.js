@@ -17,11 +17,11 @@ var blogEntries = [];
 //   }
 
 class BlogEntry {
-  constructor(postNum,date,pain,mood,oxycodone,advil,tylenol,colace,cyclobenzaprine,amoxicillian,morphine,toradol,piperacillin,xanax) {
+  constructor(postNum,dt,pain,mood,oxycodone,advil,tylenol,colace,cyclobenzaprine,amoxicillian,morphine,toradol,piperacillin,xanax) {
     this.post_num = {};
     this.post_num.N = postNum.toString();
-    this.date = {}; 
-    this.date.S = new Date(date).toDateString();
+    this.dt = {}; 
+    this.dt.S = new Date(dt).toDateString();
     // this.post_title = {};
     // this.post_title.S = postTitle;
     // this.post_entry = {};
@@ -50,8 +50,8 @@ class BlogEntry {
     this.piperacillin.N = piperacillin.toString();
     this.xanax = {};
     this.xanax.N = xanax.toString();
-    this.month = {};
-    this.month.N = new Date(date).getMonth().toString();
+    // this.month = {};
+    // this.month.N = new Date(dt).getMonth().toString();
   }
 }
 
@@ -73,7 +73,7 @@ async.eachSeries(blogEntries, function(value, next) {
   var params = {};
   params.Item = value; 
   // params.TableName = "processblog";
-  params.TableName = "processblog-recovery";
+  params.TableName = "processblog_recovery";
   
   dynamodb.putItem(params, function (err, data) {
     if (err) console.log(err, err.stack); // an error occurred
