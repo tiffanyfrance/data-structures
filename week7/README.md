@@ -24,12 +24,13 @@ newObj.url = arr[i].url;
 Finally, I pushed that newObj to a newArr that was at a higher scope,
 console.logging that array in order to run this code in Chrome's
 developer tools, resulting in a new cleaned array with only the data 
-I need. I copied the data in developer tools using `copy(newArr)` 
+I need. I copied the data in developer tools using ```copy(newArr)``` 
 and pasted that data into a new file called <a href="locations.json">locations.json</a>.
 
 The work for this section can be found at the bottom of <a href="wa07-modify-data.js">wa07-modify-data.js</a>. 
 The top of this file shows the originial dataset as pulled from 
 the NY AA website.
+
 
 ## Deleting, Creating, and Loading Data
 1. I dropped my old aalocations table
@@ -43,4 +44,5 @@ stepping through each section.
 5. I checked that the entries were working and looked correct 
 by using PGAdmin.
 
+Here is a screenshot of PGAdmin:<br />
 <img src="pgadmin.png" width="400px">
