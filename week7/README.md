@@ -1,6 +1,6 @@
 ## Week 7: All AA Locations in NYC
 
-# Data
+## Data
 I retrieved the data from the source code on 
 <a href="https://www.nyintergroup.org/">NY Intergroup's AA website</a>. 
 The json as it was included all the meetings for the entire state of New York,
@@ -15,8 +15,9 @@ original dataset into a newObj:<br />
     newObj.long = arr[i].longitude;
     newObj.notes = arr[i].notes;
     newObj.region = arr[i].region;
-    newObj.url = arr[i].url;
-    ```
+    newObj.url = arr[i].url;```
+
+    
 Finally, I pushed that newObj to a newArr that was at a higher scope,
 console.logging that array in order to run this code in Chrome's
 developer tools, resulting in a new cleaned array with only the data 
@@ -27,7 +28,7 @@ The work for this section can be found at the bottom of <a href="wa07-modify-dat
 The top of this file shows the originial dataset as pulled from 
 the NY AA website.
 
-# Deleting, Creating, and Loading Data
+## Deleting, Creating, and Loading Data
 1. I dropped my old aalocations table
 2. I recreated the table using only the fields that were applicable 
 to my locations.json
@@ -38,3 +39,5 @@ console.log bits of the code to ensure it was working properly,
 stepping through each section.
 5. I checked that the entries were working and looked correct 
 by using PGAdmin.
+
+<img src="pgadmin.png" width="400px">
