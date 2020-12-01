@@ -1,4 +1,4 @@
-## Week 8 & 9: Particle Photon Temperature Sensor
+# Week 8 & 9: Particle Photon Temperature Sensor
 
 <b>Overview</b><br>
 Assignment 8 & 9 were used to hook up a Photon controller and connect it to a data source.

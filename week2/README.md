@@ -1,4 +1,4 @@
-## Week 2: Using Cheerio to Scrub
+# Week 2: Using Cheerio to Scrub
 
 <b>Cheerio:</b><br /> 
 Installed Cheerio which works like jQuery

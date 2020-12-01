@@ -1,6 +1,6 @@
-## Week 6: Queries
+# Week 6: Queries
 
-# SQL Query
+## SQL Query
 
 For the SQL query, we are using ```SELECT``` statement. My table only has three columns so I included all three columns plus a check for addresses that are showing up multiple times.
 
@@ -11,7 +11,7 @@ This returned a response, no problem.
 
 <img src="sql.png" width="300px">
 
-# NoSQL Query
+## NoSQL Query
 
 I am having trouble with the dynamo query. I was able to get a single query by specifying a singe post_num (my primary key), however I was not able to get the date range to work, nor was I able to get multiple returns. I tried recreating my table but that didn't help.
 

@@ -1,4 +1,4 @@
-## Week 3: Using TAMU to get geolocation data
+# Week 3: Using TAMU to get geolocation data
 
 <b>Modifying last week's assignment:</b><br /> 
 I modified last week's assignment for this week.

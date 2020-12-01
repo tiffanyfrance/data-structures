@@ -1,4 +1,4 @@
-## Week 5: Dynamodb
+# Week 5: Dynamodb
 
 ## Coming back to Cloud9
 Since the second week of class, I have been using a local instance but for this week

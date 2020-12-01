@@ -1,4 +1,4 @@
-## Week 7: All AA Locations in NYC
+# Week 7: All AA Locations in NYC
 
 ## Data
 I retrieved the data from the source code on 

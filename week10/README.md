@@ -1,6 +1,6 @@
-## Week 10: Interface Designs
+# Week 10: Interface Designs
 
-# Project 1: AA Map
+## Project 1: AA Map
 
 I wanted to focus on the user and approach this one from a UX perspective. Therefore, I asked questions about how can the user find what they need as quickly as possible. Because the instructions for this assignment indicated that it would be using Leafletjs, I sketched a fairly basic idea of what a Leaflet implimentation might look like.
 
@@ -52,7 +52,7 @@ Can we use a library other than Leaflet? Mapbox, Kepler, Deckgl...
 - See above UX portion. In addition to that, I assume the user is likely using a mobile phone. Mobile first design is important.
 
 
-# Project 2: Recovery Blog
+## Project 2: Recovery Blog
 
 Intitally for this project I wanted to write a daily poem, my first assignment with Dynamo included 3 such poems. I have an additional 10 poems, which I continued to collect since I enjoyed that writing process. However, because of a personal health issue, I decided to change this project from being poetry to being a visualization of my health issue from pre to post surgery notes, with fields including pain level, mood, and pills taken (which was an insane amount when I go back and look at the data!)
 
@@ -73,7 +73,7 @@ Ideally this would be an illustrator visualization, but I will be attempting to 
 - Ideally I would like this to be a poster type visualization, but because its data structures my challenge will be able to make this nice looking on all device widths. My assumption about the user is that they will want to zoom and pan to see details.
 
 
-# Project 3: Weather Sensor
+## Project 3: Weather Sensor
 
 I haven't recieved the magnetic field sensor yet so I am using the temperature/humidity gauge.
 

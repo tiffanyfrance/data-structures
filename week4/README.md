@@ -1,4 +1,4 @@
-## Week 4: RDS, Postgres, and SQL
+# Week 4: RDS, Postgres, and SQL
 
 <b>Overview</b><br>
 This assignment had us create a new database using RDS.
