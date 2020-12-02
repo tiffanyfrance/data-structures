@@ -30,23 +30,28 @@ db_credentials.port = 5432;
 
 
 // PART B: INSERT
-let rawdata = fs.readFileSync(process.env.LOCAL_DIR + 'week7/locations.json');
+let rawdata = fs.readFileSync(process.env.LOCAL_DIR + 'week7/raw-data-modified.json');
 let addressesForDb = JSON.parse(rawdata);
 
-async.eachSeries(addressesForDb, function(value, callback) {
-    const client = new Client(db_credentials);
-    client.connect();
+// async.eachSeries(addressesForDb, function(value, callback) {
+//     const client = new Client(db_credentials);
+//     client.connect();
 
-    var thisQuery = `INSERT INTO aalocations VALUES (E'${value.venue}', '${value.address}', ${value.lat}, ${value.long}, '${value.notes}', '${value.region}', '${value.url}');`;
+//     var thisQuery = `INSERT INTO aalocations VALUES (E'${value.venue}', '${value.address}', ${value.lat}, ${value.long}, '${value.notes}', '${value.region}', '${value.url}');`;
     
-    console.log(thisQuery)
+//     console.log(thisQuery)
 
-    client.query(thisQuery, (err, res) => {
-        console.log(err, res);
-        client.end();
-    });
-    setTimeout(callback, 1000); 
-}); 
+//     client.query(thisQuery, (err, res) => {
+//         console.log(err, res);
+//         client.end();
+//     });
+//     setTimeout(callback, 1000); 
+// }); 
+
+
+
+
+
 
 // // PART C: QUERY
 // // Connect to the AWS RDS Postgres database

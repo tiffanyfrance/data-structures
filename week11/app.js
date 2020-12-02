@@ -76,6 +76,8 @@ app.get('/aa', function(req, res) {
     // Connect to the AWS RDS Postgres database
     const client = new Pool(db_credentials);
     
+    // TODO: Update with new data with days and times
+
     // SQL query 
     //${value.venue}', '${value.address}', ${value.lat}, ${value.long}, '${value.notes}', '${value.region}', '${value.url}
     var thisQuery = `SELECT lat, long, json_agg(json_build_object('venue', venue, 'address', address, 'url', url)) as meetings
