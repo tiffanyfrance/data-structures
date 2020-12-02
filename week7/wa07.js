@@ -29,7 +29,12 @@ db_credentials.port = 5432;
 // });
 
 
+// TODO: Add data to table
+
 // PART B: INSERT
+// let rawdata = fs.readFileSync(process.env.LOCAL_DIR + 'week7/locations.json');
+// let addressesForDb = JSON.parse(rawdata);
+
 let rawdata = fs.readFileSync(process.env.LOCAL_DIR + 'week7/raw-data-modified.json');
 let addressesForDb = JSON.parse(rawdata);
 
