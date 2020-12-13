@@ -40,14 +40,14 @@ const format = d3.timeFormat('%b %d');
 
   svg.append('defs')
     .html(`<radialGradient id="Gradient1">
-             <stop offset="70%" stop-color="hsl(10, 50%, 50%)"/>
-             <stop offset="100%" stop-color="hsl(60, 80%, 50%)"/>
+             <stop offset="70%" stop-color="rgb(209, 60, 75)"/>
+             <stop offset="100%" stop-color="rgb(253, 245, 172)"/>
            </radialGradient>`)
 
   svg.append('defs')
     .html(`<radialGradient id="Gradient2">
-            <stop offset="90%" stop-color="hsl(70, 80%, 50%)"/>
-            <stop offset="100%" stop-color="hsl(120, 50%, 50%)"/>
+            <stop offset="90%" stop-color="rgb(216, 239, 159)"/>
+            <stop offset="100%" stop-color="rgb(131, 204, 165)"/>
           </radialGradient>`)
 
 
