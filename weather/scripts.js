@@ -71,7 +71,7 @@
 			.attr('transform', `translate(0,${margin.top})`)
 
 		let newDate = new Date(dbd.date);
-	
+
 		svg.append('text')
 			.text(formatDate(newDate))
 			.attr('class', 'date')
@@ -137,16 +137,19 @@
 			.style('display', 'none');
 
 		tooltip.append('rect')
-			.attr('x', -27)
-			.attr('width', 54)
+			.attr('x', 1)
+			.attr('width', 50)
 			.attr('y', -32)
 			.attr('height', 24)
 			.attr('fill', 'white');
 
-		let topText = tooltip.append('text')
-			.attr('y', -28);
+		let topText = svg.append('text')
+			.attr('class', 'tooltip-text')
+			.attr('y', 0)
+			.style('display', 'none');
 
 		let bottomText = tooltip.append('text')
+			.attr('x', 26)
 			.attr('y', -12);
 
 		tooltip.append('circle')
@@ -158,6 +161,7 @@
 				if (e.offsetX < x.range()[0] || e.offsetX > x.range()[1]) {
 					d3.selectAll('.tooltip').style('display', 'none');
 					d3.selectAll('.vertical-line').style('display', 'none');
+					d3.selectAll('.tooltip-text').style('display', 'none');
 				} else {
 					for (let mm of mouseMoves) {
 						mm(e);
@@ -167,6 +171,7 @@
 			.on('mouseout', () => {
 				d3.selectAll('.tooltip').style('display', 'none');
 				d3.selectAll('.vertical-line').style('display', 'none');
+				d3.selectAll('.tooltip-text').style('display', 'none');
 			})
 
 		mouseMoves.push((e) => {
@@ -186,6 +191,9 @@
 
 			verticalLine.attr('x1', posX)
 				.attr('x2', posX)
+				.style('display', null);
+
+			topText.attr('x', posX)
 				.style('display', null);
 		});
 	}
