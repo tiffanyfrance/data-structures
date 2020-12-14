@@ -64,11 +64,13 @@
 		let svg = d3.select("#viz").append("svg")
 			.attr('width', width + margin.left + margin.right)
 			.attr('height', height + margin.top + margin.bottom)
+			.append('g')
+			.attr('transform', `translate(0,${margin.top})`)
 
 		svg.append('text')
 			.text(d => dbd.date)
 			.attr('x', 0)
-			.attr('y', 20)
+			.attr('y', -10)
 			.attr('width', 100)
 			.attr('height', 20)
 
