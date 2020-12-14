@@ -6,4 +6,9 @@ body {
 
 #viz {
   max-width: 900px;
+  margin-left: 30px;
+}
+
+foreignObject {
+  text-align: center;
 }

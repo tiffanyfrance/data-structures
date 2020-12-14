@@ -2,15 +2,28 @@ const RAD_TO_DEG = 180 / Math.PI;
 
 const width = 954;
 const height = width;
-const margin = 10;
+const margin = 50;
 
 const maxAngle = 2 * Math.PI * 0.9;
 const innerRadius = width / 5;
 const outerRadius = width / 2 - margin;
 const outerRadiusData = outerRadius - 20;
+const textRadius = outerRadius * 0.82;
+const medicineRadius = outerRadius * 0.91;
 const middleRadius = (innerRadius + outerRadiusData) / 2;
 
 const format = d3.timeFormat('%b %d');
+
+let halfAngle;
+
+let x = d3.scaleUtc()
+  .range([0, maxAngle]);
+
+let y = d3.scaleLinear()
+  .domain([10, 0])
+  .range([innerRadius, outerRadiusData]);
+
+let svg;
 
 (async () => {
   window.data = await d3.csv('Process Blog.csv', d => {
@@ -21,19 +34,13 @@ const format = d3.timeFormat('%b %d');
 
   data.sort((a, b) => a.dt - b.dt);
 
-  let x = d3.scaleUtc()
-    .domain(d3.extent(data, d => d.dt))
-    .range([0, maxAngle]);
-
-  let y = d3.scaleLinear()
-    .domain([10, 0])
-    .range([innerRadius, outerRadiusData]);
+  x.domain(d3.extent(data, d => d.dt))
 
   let area = d3.areaRadial()
     .curve(d3.curveCatmullRom)
     .angle(d => ('angle' in d) ? d.angle : x(d.dt));
 
-  const svg = d3.select('#viz').append('svg')
+  svg = d3.select('#viz').append('svg')
     .attr('viewBox', [-width / 2, -height / 2, width, height])
     .attr('stroke-linejoin', 'round')
     .attr('stroke-linecap', 'round');
@@ -60,7 +67,37 @@ const format = d3.timeFormat('%b %d');
           </radialGradient>`)
 
 
-  const halfAngle = ((maxAngle) / data.length) / 2;
+  halfAngle = ((maxAngle) / data.length) / 2;
+
+  const hospitalDays = [
+    '2020-10-07',
+    '2020-10-08',
+    '2020-10-09',
+    '2020-10-10',
+    '2020-10-11',
+    '2020-10-12',
+    '2020-10-13',
+    '2020-10-18',
+    '2020-10-31',
+  ];
+
+  let hospitalData = data.filter(d => {
+    let str = d.dt.toISOString().substr(0, 10);
+    return hospitalDays.includes(str);
+  });
+
+  let arc = d3.arc()
+    .innerRadius(middleRadius)
+    .outerRadius(outerRadius);
+
+  svg.append('g')
+    .selectAll('path')
+    .data(hospitalData)
+    .enter()
+    .append('path')
+    .attr('fill', '#EADA8C')
+    .attr('opacity', 0.15)
+    .attr('d', d => arc({ startAngle: x(d.dt), endAngle: x(d.dt) + halfAngle + halfAngle + 0.0015 }))
 
   let dividerGroup = svg.append('g');
 
@@ -72,7 +109,7 @@ const format = d3.timeFormat('%b %d');
     .attr('stroke', '#000')
     .attr('stroke-opacity', 0.1)
     .attr('d', d => `
-            M${d3.pointRadial(x(d.dt), innerRadius + 130)}
+            M${d3.pointRadial(x(d.dt), innerRadius + 110)}
             L${d3.pointRadial(x(d.dt), outerRadius)}
           `)
 
@@ -81,7 +118,7 @@ const format = d3.timeFormat('%b %d');
     .attr('stroke', '#000')
     .attr('stroke-opacity', 0.1)
     .attr('d', d => `
-          M${d3.pointRadial(maxAngle + halfAngle + halfAngle, innerRadius + 130)}
+          M${d3.pointRadial(maxAngle + halfAngle + halfAngle, innerRadius + 110)}
           L${d3.pointRadial(maxAngle + halfAngle + halfAngle, outerRadius)}
         `)
 
@@ -91,7 +128,7 @@ const format = d3.timeFormat('%b %d');
     .enter()
     .append('text')
     .attr('class', 'divider-text')
-    .attr('y', -(outerRadius * 0.82))
+    .attr('y', -(textRadius))
     .attr('text-anchor', 'middle')
     .attr('transform', d => `rotate(${(x(d.dt) + halfAngle) * RAD_TO_DEG})`)
     .text(d => format(d.dt))
@@ -152,17 +189,91 @@ const format = d3.timeFormat('%b %d');
       .outerRadius(d => y(d.pain))
       (lessHurtData));
 
-  let arc = d3.arc()
-    .innerRadius(middleRadius)
-    .outerRadius(middleRadius);
+  buildMedicine(data);
 
-  // svg.append('path')
-  //   .attr('fill', 'none')
-  //   .attr('stroke', '#000')
-  //   .attr('stroke-opacity', 0.2)
-  //   .attr('d', arc({ startAngle: 0, endAngle: maxAngle + halfAngle + halfAngle }))
+  
+  svg.append('foreignObject')
+    .attr('width', 100)
+    .attr('height', 30)
+    .attr('x', -500)
+    .attr('y', -40)
+    .html('Hospital<br/>ER')
 
-  svg.append('circle')
-    .attr('r', 4)
-    .attr('fill', 'red')
+  svg.append('foreignObject')
+    .attr('width', 100)
+    .attr('height', 30)
+    .attr('x', 120)
+    .attr('y', 410)
+    .html('Hospital<br/>Complications')
+
+    svg.append('foreignObject')
+    .attr('width', 100)
+    .attr('height', 30)
+    .attr('x', 340)
+    .attr('y', -250)
+    .html('Surgery<br/>Date')
+
+    svg.append('foreignObject')
+    .attr('width', 100)
+    .attr('height', 50)
+    .attr('x', 380)
+    .attr('y', 150)
+    .html('Released<br/>from<br/>Hospital')
+
 })();
+
+function buildMedicine(data) {
+  let nodes = [];
+
+  for (let d of data) {
+    let point = d3.pointRadial(x(d.dt) + halfAngle, medicineRadius);
+
+    addMedicine(nodes, d, 'morphine', point, 6, 1);
+    addMedicine(nodes, d, 'toradol', point, 6, 1);
+    addMedicine(nodes, d, 'oxycodone', point, 5, 0.75);
+    addMedicine(nodes, d, 'tylenol', point, 4, 0.5);
+    addMedicine(nodes, d, 'advil', point, 4, 0.5);
+  }
+
+  let g = svg.append('g');
+
+  let simulation = d3.forceSimulation(nodes)
+    .force('collision', d3.forceCollide().radius(d => d.radius))
+    .force('x', d3.forceX().x(d => d.xValue))
+    .force('y', d3.forceY().y(d => d.yValue))
+
+  simulation.on('tick', () => {
+    let item = g
+      .attr('fill', '#e66300')
+      .attr('stroke', '#fff')
+      .attr('stroke-width', 1.5)
+      .selectAll('circle')
+      .data(nodes)
+
+    item.enter()
+      .append('circle')
+      .attr('r', (d) => d.radius)
+      .style('opacity', d => d.opacity)
+      .merge(item)
+      .attr('cx', d => d.x)
+      .attr('cy', d => d.y)
+  })
+}
+
+function addMedicine(nodes, d, name, point, radius, opacity) {
+  for (let i = 0; i < d[name]; i++) {
+    nodes.push({
+      name,
+      radius,
+      opacity,
+      xValue: point[0],
+      yValue: point[1],
+      x: point[0] + getRandom(-8, 8),
+      y: point[1] + getRandom(-8, 8)
+    });
+  }
+}
+
+function getRandom(min, max) {
+  return Math.random() * (max - min) + min;
+}
