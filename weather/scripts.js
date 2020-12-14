@@ -51,9 +51,9 @@
 	window.foo = dataByDate;
 
 
-	let margin = { top: 20, right: 30, bottom: 30, left: 40 },
-		width = 500 - margin.left - margin.right,
-		height = 300 - margin.top - margin.bottom;
+	let margin = { top: 40, right: 20, bottom: 20, left: 20 },
+		width = 250 - margin.left - margin.right,
+		height = 200 - margin.top - margin.bottom;
 
 	const tooltip = d3.select('body').append('div')
 		.attr('class', 'svg-tooltip');
@@ -62,8 +62,15 @@
 		let day = dbd.data;
 
 		let svg = d3.select("#viz").append("svg")
-			.attr('width', width)
-			.attr('height', height)
+			.attr('width', width + margin.left + margin.right)
+			.attr('height', height + margin.top + margin.bottom)
+
+		svg.append('text')
+			.text(d => dbd.date)
+			.attr('x', 0)
+			.attr('y', 20)
+			.attr('width', 100)
+			.attr('height', 20)
 
 		let x = d3.scaleUtc()
 			.domain(d3.extent(day, d => new Date(d.sensortime)))
