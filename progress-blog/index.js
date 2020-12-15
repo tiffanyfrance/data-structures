@@ -26,11 +26,22 @@ let y = d3.scaleLinear()
 let svg;
 
 (async () => {
-  window.data = await d3.csv('Process Blog.csv', d => {
+  window.data = await fetch('process-blog.json');
+  // window.data = await fetch('https://dq7crm4zu8.execute-api.us-east-1.amazonaws.com/Prod/api/processblog');
+  data = await data.json();
+
+  for (let d of data) {
+    for (let prop in d) {
+      if ('N' in d[prop]) {
+        d[prop] = d[prop]['N'];
+      } else {
+        d[prop] = d[prop]['S'];
+      }
+    }
+
     d = d3.autoType(d);
     d.dt = new Date(d.dt);
-    return d;
-  });
+  }
 
   data.sort((a, b) => a.dt - b.dt);
 
@@ -45,49 +56,10 @@ let svg;
     .attr('stroke-linejoin', 'round')
     .attr('stroke-linecap', 'round');
 
-  // <radialGradient id="Gradient1">
-  //    <stop offset="70%" stop-color="rgb(209, 60, 75)"/>
-  //    <stop offset="100%" stop-color="rgb(253, 245, 172)"/>
-  //  </radialGradient>
-  // <radialGradient id="Gradient2">
-  //   <stop offset="90%" stop-color="rgb(216, 239, 159)"/>
-  //   <stop offset="100%" stop-color="rgb(131, 204, 165)"/>
-  // </radialGradient>
-
-  // <stop offset="70%" stop-color="hsl(10, 50%, 50%)"/>
-  // <stop offset="100%" stop-color="hsl(60, 80%, 50%)"/>
-
-  // <stop offset="90%" stop-color="hsl(70, 80%, 50%)"/>
-  // <stop offset="100%" stop-color="hsl(120, 50%, 50%)"/>
-
-  // svg.append('defs')
-  //   .html(`<radialGradient id="Gradient1">
-  //            <stop offset="70%" stop-color="#F17098"/>
-  //            <stop offset="100%" stop-color="#FFDF9F"/>
-  //          </radialGradient>`)
-
-  // svg.append('defs')
-  //   .html(`<radialGradient id="Gradient2">
-  //           <stop offset="90%" stop-color="#B7F8DB"/>
-  //           <stop offset="100%" stop-color="#50c9c3"/>
-  //         </radialGradient>`)
-
-  // svg.append('defs')
-  //   .html(`<radialGradient id="Gradient1">
-  //           <stop offset="70%" stop-color="hsl(10, 50%, 50%)"/>
-  //           <stop offset="100%" stop-color="hsl(60, 80%, 50%)"/>
-  //          </radialGradient>`)
-
-  // svg.append('defs')
-  //   .html(`<radialGradient id="Gradient2">
-  //           <stop offset="90%" stop-color="hsl(70, 80%, 50%)"/>
-  //           <stop offset="100%" stop-color="hsl(120, 50%, 50%)"/>
-  //         </radialGradient>`)
-
   svg.append('defs')
     .html(`<radialGradient id="Gradient1">
-              <stop offset="70%" stop-color="hsl(10, 50%, 50%)"/>
-              <stop offset="100%" stop-color="hsl(60, 80%, 70%)"/>
+              <stop offset="60%" stop-color="hsl(10, 50%, 50%)"/>
+              <stop offset="100%" stop-color="#EADA8C"/>
            </radialGradient>`)
 
   svg.append('defs')
@@ -161,6 +133,36 @@ let svg;
     .attr('text-anchor', 'middle')
     .attr('transform', d => `rotate(${(x(d.dt) + halfAngle) * RAD_TO_DEG})`)
     .text(d => format(d.dt))
+
+  svg.append('text')
+    .text('2.5')
+    .attr('x', -50)
+    .attr('y', -318)
+    .attr('class','key');
+
+  svg.append('text')
+    .text('5')
+    .attr('x', -40)
+    .attr('y', -280)
+    .attr('class','key');
+
+  svg.append('text')
+    .text('7.5')
+    .attr('x', -50)
+    .attr('y', -243)
+    .attr('class','key');
+
+  svg.append('text')
+    .text('10')
+    .attr('x', -48)
+    .attr('y', -205)
+    .attr('class','key');
+
+  svg.append('text')
+    .text('pain level')
+    .attr('x', -75)
+    .attr('y', -350)
+    .attr('class','key');
 
   let hurtData = data.map(d => {
     let result = d;

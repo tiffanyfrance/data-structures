@@ -29,6 +29,11 @@ foreignObject {
   display: inline-block;
 }
 
+text.key {
+  fill: #666;
+  font-size: 11px;
+}
+
 @media screen and (max-width: 1201px) {
 
   #description {

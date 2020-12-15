@@ -12,22 +12,23 @@ db_credentials.database = 'aa';
 db_credentials.password = process.env.PG_PASSWORD;
 db_credentials.port = 5432;
 
-// // PART A: CREATE
-// // Connect to the AWS RDS Postgres database
+// PART A: CREATE
+// Connect to the AWS RDS Postgres database
 // const client = new Client(db_credentials);
 // client.connect();
 
 // // Sample SQL statement to create a table: 
 // var thisQuery = "CREATE TABLE aalocations (venue varchar(100), address varchar(250), lat double precision, long double precision, notes varchar(300), region varchar(5), url varchar(250));";
+// var thisQuery = "CREATE TABLE aalocations (id varchar(100), venue varchar(100), location_id varchar(100), address varchar(250), lat double precision, long double precision, notes varchar(1000), region varchar(50), sub_region varchar(50), url varchar(250), day varchar(50), time varchar(50), end_time varchar(50), time_formatted varchar(50));"
 
-// // Sample SQL statement to delete a table: 
-// // var thisQuery = "DROP TABLE aalocations;"; 
+
+// Sample SQL statement to delete a table: 
+// var thisQuery = "DROP TABLE aalocations;"; 
 
 // client.query(thisQuery, (err, res) => {
 //     console.log(err, res);
 //     client.end();
 // });
-
 
 // TODO: Add data to table
 
@@ -35,15 +36,16 @@ db_credentials.port = 5432;
 // let rawdata = fs.readFileSync(process.env.LOCAL_DIR + 'week7/locations.json');
 // let addressesForDb = JSON.parse(rawdata);
 
-let rawdata = fs.readFileSync(process.env.LOCAL_DIR + 'week7/raw-data-modified.json');
-let addressesForDb = JSON.parse(rawdata);
+// let rawdata = fs.readFileSync(process.env.LOCAL_DIR + 'week7/raw-data-modified.json');
+// let addressesForDb = JSON.parse(rawdata);
 
 // async.eachSeries(addressesForDb, function(value, callback) {
 //     const client = new Client(db_credentials);
 //     client.connect();
 
-//     var thisQuery = `INSERT INTO aalocations VALUES (E'${value.venue}', '${value.address}', ${value.lat}, ${value.long}, '${value.notes}', '${value.region}', '${value.url}');`;
-    
+//     // var thisQuery = `INSERT INTO aalocations VALUES (E'${value.venue}', '${value.address}', ${value.lat}, ${value.long}, '${value.notes}', '${value.region}', '${value.url}');`;
+//     var thisQuery = `INSERT INTO aalocations VALUES (E'${value.id}', '${value.venue}', '${value.location_id}', '${value.address}', ${value.lat}, ${value.long}, '${value.notes}', '${value.region}', '${value.sub_region}', '${value.url}', '${value.day}', '${value.time}', '${value.end_time}', '${value.time_formatted}');`;
+
 //     console.log(thisQuery)
 
 //     client.query(thisQuery, (err, res) => {
@@ -52,11 +54,6 @@ let addressesForDb = JSON.parse(rawdata);
 //     });
 //     setTimeout(callback, 1000); 
 // }); 
-
-
-
-
-
 
 // // PART C: QUERY
 // // Connect to the AWS RDS Postgres database

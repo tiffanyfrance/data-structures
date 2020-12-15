@@ -1,5 +1,6 @@
 (async () => {
 	let allData = await fetch('sensor.json');
+	// let allData = await fetch('https://dq7crm4zu8.execute-api.us-east-1.amazonaws.com/Prod/api/sensor');
 	allData = await allData.json();
 
 	for (let i = 1; i < allData.length; i++) {
@@ -10,6 +11,7 @@
 			i--;
 		}
 	}
+
 
 	let max = d3.max(allData, d => d.sensortemp);
 	console.log('max', max);
@@ -49,7 +51,7 @@
 	console.log(dataByDate);
 
 
-	let margin = { top: 40, right: 20, bottom: 20, left: 20 },
+	let margin = { top: 40, right: 10, bottom: 20, left: 20 },
 		width = 250 - margin.left - margin.right,
 		height = 200 - margin.top - margin.bottom;
 
@@ -62,13 +64,13 @@
 	for (let dbd of dataByDate) {
 		let day = dbd.data;
 
-		let realSvg = d3.select('#viz').append('svg')
+		let realSvg = d3.select('#viz').insert('svg',':first-child')
 			.attr('width', width + margin.left + margin.right)
 			.attr('height', height + margin.top + margin.bottom);
 
 
 		let svg = realSvg.append('g')
-			.attr('transform', `translate(0,${margin.top})`)
+			.attr('transform', `translate(${margin.left},${margin.top})`)
 
 		let newDate = new Date(dbd.date);
 
@@ -98,7 +100,7 @@
 		let yAxis = g => g
 			.attr('transform', `translate(${margin.left},0)`)
 			.attr('class', 'y-axis')
-			.call(d3.axisLeft(y).tickValues([20, 30, 40, 50, 60, 70, 80, 90]));
+			.call(d3.axisLeft(y).tickValues([min,mean,max]));
 
 		let verticalLine = svg.append('line')
 			.attr('class', 'vertical-line')
@@ -116,9 +118,14 @@
 			.x(d => x(d.sensortime))
 			.y(d => y(d.sensortemp));
 
+		let area = d3.area()
+			.x(d => x(d.sensortime))
+			.y1(d => y(d.sensortemp))
+			.y0((height + margin.bottom) / 2);
+
 		svg.append('g')
 			.call(xAxis)
-			.attr('transform', `translate(0,${((height - margin.bottom) / 2)})`);
+			.attr('transform', `translate(0,${((height + margin.bottom) / 2)})`);
 
 		svg.append('g')
 			.call(yAxis);
@@ -131,6 +138,12 @@
 			.attr('stroke-linejoin', 'round')
 			.attr('stroke-linecap', 'round')
 			.attr('d', line);
+
+		svg.append('path')
+			.datum(day)
+			.attr('fill', 'steelblue')
+			.attr('opacity', 0.2)
+			.attr('d', area);
 
 		let tooltip = svg.append('g')
 			.attr('class', 'tooltip')
@@ -158,13 +171,15 @@
 
 		realSvg
 			.on('mousemove', e => {
-				if (e.offsetX < x.range()[0] || e.offsetX > x.range()[1]) {
+				let mouseX = e.offsetX - margin.left;
+
+				if (mouseX < x.range()[0] || mouseX > x.range()[1]) {
 					d3.selectAll('.tooltip').style('display', 'none');
 					d3.selectAll('.vertical-line').style('display', 'none');
 					d3.selectAll('.tooltip-text').style('display', 'none');
 				} else {
 					for (let mm of mouseMoves) {
-						mm(e);
+						mm(mouseX);
 					}
 				}
 			})
@@ -174,8 +189,8 @@
 				d3.selectAll('.tooltip-text').style('display', 'none');
 			})
 
-		mouseMoves.push((e) => {
-			let nearest = bisect(day, x.invert(e.offsetX));
+		mouseMoves.push((mouseX) => {
+			let nearest = bisect(day, x.invert(mouseX));
 
 			if (!nearest) {
 				return;
