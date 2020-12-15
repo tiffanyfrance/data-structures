@@ -54,18 +54,47 @@ let svg;
   //   <stop offset="100%" stop-color="rgb(131, 204, 165)"/>
   // </radialGradient>
 
+  // <stop offset="70%" stop-color="hsl(10, 50%, 50%)"/>
+  // <stop offset="100%" stop-color="hsl(60, 80%, 50%)"/>
+
+  // <stop offset="90%" stop-color="hsl(70, 80%, 50%)"/>
+  // <stop offset="100%" stop-color="hsl(120, 50%, 50%)"/>
+
+  // svg.append('defs')
+  //   .html(`<radialGradient id="Gradient1">
+  //            <stop offset="70%" stop-color="#F17098"/>
+  //            <stop offset="100%" stop-color="#FFDF9F"/>
+  //          </radialGradient>`)
+
+  // svg.append('defs')
+  //   .html(`<radialGradient id="Gradient2">
+  //           <stop offset="90%" stop-color="#B7F8DB"/>
+  //           <stop offset="100%" stop-color="#50c9c3"/>
+  //         </radialGradient>`)
+
+  // svg.append('defs')
+  //   .html(`<radialGradient id="Gradient1">
+  //           <stop offset="70%" stop-color="hsl(10, 50%, 50%)"/>
+  //           <stop offset="100%" stop-color="hsl(60, 80%, 50%)"/>
+  //          </radialGradient>`)
+
+  // svg.append('defs')
+  //   .html(`<radialGradient id="Gradient2">
+  //           <stop offset="90%" stop-color="hsl(70, 80%, 50%)"/>
+  //           <stop offset="100%" stop-color="hsl(120, 50%, 50%)"/>
+  //         </radialGradient>`)
+
   svg.append('defs')
     .html(`<radialGradient id="Gradient1">
-             <stop offset="70%" stop-color="hsl(10, 50%, 50%)"/>
-             <stop offset="100%" stop-color="hsl(60, 80%, 50%)"/>
+              <stop offset="70%" stop-color="hsl(10, 50%, 50%)"/>
+              <stop offset="100%" stop-color="hsl(60, 80%, 70%)"/>
            </radialGradient>`)
 
   svg.append('defs')
     .html(`<radialGradient id="Gradient2">
-            <stop offset="90%" stop-color="hsl(70, 80%, 50%)"/>
-            <stop offset="100%" stop-color="hsl(120, 50%, 50%)"/>
-          </radialGradient>`)
-
+              <stop offset="90%" stop-color="#fee140"/>
+              <stop offset="100%" stop-color="hsl(100, 50%, 60%)"/>
+            </radialGradient>`)
 
   halfAngle = ((maxAngle) / data.length) / 2;
 
@@ -191,29 +220,29 @@ let svg;
 
   buildMedicine(data);
 
-  
+
   svg.append('foreignObject')
     .attr('width', 100)
-    .attr('height', 30)
+    .attr('height', 50)
     .attr('x', -500)
     .attr('y', -40)
     .html('Hospital<br/>ER')
 
   svg.append('foreignObject')
     .attr('width', 100)
-    .attr('height', 30)
+    .attr('height', 50)
     .attr('x', 120)
     .attr('y', 410)
-    .html('Hospital<br/>Complications')
+    .html('Hospital')
 
-    svg.append('foreignObject')
+  svg.append('foreignObject')
     .attr('width', 100)
-    .attr('height', 30)
+    .attr('height', 50)
     .attr('x', 340)
     .attr('y', -250)
     .html('Surgery<br/>Date')
 
-    svg.append('foreignObject')
+  svg.append('foreignObject')
     .attr('width', 100)
     .attr('height', 50)
     .attr('x', 380)
