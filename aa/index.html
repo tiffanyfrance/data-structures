@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>AA Meetings</title>
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@500&display=swap" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.css" rel="stylesheet" />
+
+  <style>
+    * {
+      font-family: 'Assistant', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+
+    #overlay {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 1;
+      width: 300px;
+      height: calc(100vh - 40px);
+      background-color: #333;
+      padding: 20px;
+      color: #fff;
+    }
+
+    #today {
+      margin-top: -15px;
+    }
+
+    button {
+      background: #eee;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+    }
+
+    select {
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      width: 80%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="overlay">
+    <img src="aa-logo@2x-8.png" alt="aa for new york" style="max-width: 300px;" />
+    <div style="margin: 40px 0px;">
+      <hr style="border-color: #888;">
+      <div>
+        <p>
+          We're showing meetings for today:
+        <h3 id="today"></h3>
+        </p>
+      </div>
+      <hr style="border-color: #888;">
+    </div>
+    <div>
+      <p>Looking for a different day?</p>
+      <p>Select day of the week:</p>
+      <select name="weekdays" id="weekdays">
+        <option value="all">All Days</option>
+        <option value="Sunday">Sunday</option>
+        <option value="Monday">Monday</option>
+        <option value="Tuesday">Tuesday</option>
+        <option value="Wednesday">Wednesday</option>
+        <option value="Thursday">Thursday</option>
+        <option value="Friday">Friday</option>
+        <option value="Saturday">Saturday</option>
+      </select>
+      <p>Meetings time:</p>
+      <p>
+        <button>9AM - 1PM</button>
+        <button>1PM - 5PM</button>
+        <button>After 5PM</button>
+      </p>
+    </div>
+  </div>
+  <div id="map"></div>
+  <script src="script.js"></script>
+
+</body>
+
+</html>
