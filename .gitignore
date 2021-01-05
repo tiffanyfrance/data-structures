@@ -4,3 +4,4 @@
 .gitignore
 .DS_Store
 ecosystem.config.js
+/.vscode
